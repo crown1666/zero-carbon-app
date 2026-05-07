@@ -160,10 +160,27 @@ export function PublishPage() {
                 />
               </div>
 
-              <div className="border-2 border-dashed border-gray-200 rounded-xl p-8 text-center hover:border-emerald-300 transition-colors cursor-pointer">
+              <div 
+                className="border-2 border-dashed border-gray-200 rounded-xl p-8 text-center hover:border-emerald-300 transition-colors cursor-pointer"
+                onClick={() => document.getElementById('file-upload')?.click()}
+                onDragOver={(e) => { e.preventDefault(); e.currentTarget.classList.add('border-emerald-400', 'bg-emerald-50'); }}
+                onDragLeave={(e) => { e.currentTarget.classList.remove('border-emerald-400', 'bg-emerald-50'); }}
+                onDrop={(e) => {
+                  e.preventDefault();
+                  e.currentTarget.classList.remove('border-emerald-400', 'bg-emerald-50');
+                  alert('文件上传功能开发中！现在先用链接方式吧！');
+                }}
+              >
+                <input 
+                  id="file-upload" 
+                  type="file" 
+                  className="hidden" 
+                  onChange={() => alert('文件上传功能开发中！现在先用链接方式吧！')}
+                />
                 <Upload className="w-8 h-8 text-gray-400 mx-auto mb-2" />
                 <p className="text-sm text-gray-600">点击或拖拽上传文件</p>
-                <p className="text-xs text-gray-400 mt-1">支持 PDF、Word、Excel 等格式</p>
+                <p className="text-xs text-gray-400 mt-1">支持 PDF、Word、Excel 等格式（开发中）</p>
+                <p className="text-xs text-amber-500 mt-2">👉 现在先用链接方式发布吧！</p>
               </div>
             </div>
           </div>
